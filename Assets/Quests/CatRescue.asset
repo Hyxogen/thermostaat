@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CatRescue
   m_EditorClassIdentifier: 
   questName: Cat Rescue
-  description: 
+  description: My cat ran away (again...), please bring her back to me!
