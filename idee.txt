@@ -1,0 +1,21 @@
+thema: roles reversed
+
+ideeen:
+- permission please
+- zombie survival - PSYCH
+- tower defense - PSYCH
+- RNJesus
+- detective evasion
+- slachthuis bouwen
+- deck builder RNJesus
+- puzzle game role switchen
+- ---> npc <---
+
+quests:
+- kat is weggerend (alweer)
+
+dialogue:
+- hero die alles skipped
+- mensen die spullen achterlaten (per ongeluk of expres)
+
+relations
