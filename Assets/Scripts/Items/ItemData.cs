@@ -13,4 +13,6 @@ public class ItemData : ScriptableObject
     public Type itemType;
     [TextArea]
     public string description;
+    public int minCost;
+    public int maxCost;
 }

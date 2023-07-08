@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Tuna
   m_EditorClassIdentifier: 
   itemName: Tuna
+  itemType: 0
   description: Yum!
+  minCost: 10
+  maxCost: 20

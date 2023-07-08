@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public List<HeroInstance> allHeroes;
     public Queue<Quest> questQueue = new();
     public List<ItemInstance> shopItems;
+    public TMPro.TextMeshProUGUI currencyText;
     public int currency = 100;
 
     public GameManager()
@@ -16,8 +17,37 @@ public class GameManager : MonoBehaviour
         questQueue.Enqueue(new CatRescueQuest("David"));
     }
 
+    private void Start()
+    {
+        UpdateUI();
+    }
+
     public string PlayerName()
     {
         return "You";
+    }
+
+    public void UpdateUI()
+    {
+        currencyText.text = "" + currency;
+    }
+
+    public void SetCurrency(int currency)
+    {
+        this.currency = currency;
+        UpdateUI();
+    }
+
+    public bool Buy(int cost)
+    {
+        if (currency >= cost)
+        {
+            SetCurrency(currency - cost);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
