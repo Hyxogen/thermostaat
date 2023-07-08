@@ -27,7 +27,6 @@ public class ShopDialogue : IDialogue
             if (manager.Buy(cost))
             {
                 manager.itemInventory.AddItem(new ItemInstance(item));
-                yield return new DialogueText(manager.PlayerName(), "Sure, thanks!");
                 yield return new DialogueText(merchant, "Buy some more!");
                 yield return new LambdaDialogueChoice("Yes (" + cost + ")", () => buyItem = true, "No", () => buyItem = false);
             }
@@ -60,7 +59,6 @@ public class ShopDialogue : IDialogue
         else
         {
             yield return new DialogueText(merchant, "I'll find another NPC.");
-            yield return new DialogueText(merchant, "Your loss!");
         }
     }
 }
