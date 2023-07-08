@@ -5,12 +5,12 @@ public class GameManager : MonoBehaviour
 {
     public HeroInstance hero;
     public QuestListUI questList;
-    public ItemInventoryUI heroInventory;
+    //public ItemInventoryUI heroInventory;
     public List<Quest> allQuests;
 
     private void Start()
     {
-        heroInventory.SetInventory(hero.inventory);
+        //heroInventory.SetInventory(hero.inventory);
     }
 
     public void StartQuest()

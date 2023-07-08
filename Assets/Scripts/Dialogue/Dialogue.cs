@@ -71,9 +71,19 @@ public class SimpleDialogue : IDialogue {
         yield return new LambdaDialogueChoice("Yeah ofcource", () => saves_cat = true, "No, fuck your cat", () => saves_cat = false);
 
         if (saves_cat) {
+            //manager.AddQuest(new CatRescueQuest());
             yield return new DialogueText(name, "Thanks man");
         } else {
             yield return new DialogueText(name, "Understandable, have a great day");
         }
+    }
+}
+
+public class HeroDialogue : IDialogue {
+    public IEnumerator<IDialogueBase> Next(GameManager manager) {
+        string name = "Matthew";
+        string you = "You";
+
+        yield return new DialogueText("(Unknown)", "Good day sir!");
     }
 }
