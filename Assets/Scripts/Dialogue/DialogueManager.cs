@@ -44,7 +44,7 @@ public class DialogueManager : MonoBehaviour
         if (gameManager.shopItems.Count > 0 && Random.value < 0.2)
         {
             ItemInstance item = gameManager.shopItems[Random.Range(0, gameManager.shopItems.Count)];
-            dialogueQueue.Enqueue(new ShopDialogue(item, "Daan"));
+            dialogueQueue.Enqueue(new ShopDialogue(item, "Jeffrey"));
         }
 
         foreach (HeroInstance hero in gameManager.allHeroes)
@@ -71,6 +71,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         dialogueQueue.Enqueue(new EndOfDayDialogue(dialogueQueue.Count == 0));
+        gameManager.NextDay();
     }
 
     void NextDialogueAndClearChoice()

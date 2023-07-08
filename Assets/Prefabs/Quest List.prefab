@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6701480677384855013
+--- !u!1 &6998653897122626338
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8491831186870044743}
-  - component: {fileID: 1709409004679466060}
-  - component: {fileID: 6472995221132861051}
-  - component: {fileID: 541158748441716838}
-  - component: {fileID: 2928187625109212856}
+  - component: {fileID: 2405909685293822029}
+  - component: {fileID: 8685614571332706062}
+  - component: {fileID: 491369380448814831}
+  - component: {fileID: 639037888719089671}
+  - component: {fileID: 4309420514083109308}
   m_Layer: 5
-  m_Name: Inventory
+  m_Name: Quest List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &8491831186870044743
+--- !u!224 &2405909685293822029
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6701480677384855013}
+  m_GameObject: {fileID: 6998653897122626338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,26 +35,26 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 164, y: 260}
-  m_Pivot: {x: 1, y: 1}
---- !u!222 &1709409004679466060
+  m_SizeDelta: {x: 312, y: 241.6985}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!222 &8685614571332706062
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6701480677384855013}
+  m_GameObject: {fileID: 6998653897122626338}
   m_CullTransparentMesh: 1
---- !u!114 &6472995221132861051
+--- !u!114 &491369380448814831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6701480677384855013}
+  m_GameObject: {fileID: 6998653897122626338}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -78,42 +78,40 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &541158748441716838
+--- !u!114 &639037888719089671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6701480677384855013}
+  m_GameObject: {fileID: 6998653897122626338}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 626cef00b799d42019a60c7764965a06, type: 3}
+  m_Script: {fileID: 11500000, guid: af7b5c8f809c7c16e9f0e1094cad2dbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
-  slotsCount: 40
-  slotGameObject: {fileID: 1800107892606026739, guid: d0bf4add99bcb0eca82e2a1759614175, type: 3}
---- !u!114 &2928187625109212856
+  slotGameObject: {fileID: 8097210611136155832, guid: 952316b41e476c49a8a34edb1b1f0eca, type: 3}
+--- !u!114 &4309420514083109308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6701480677384855013}
+  m_GameObject: {fileID: 6998653897122626338}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 10
-    m_Right: 10
-    m_Top: 10
-    m_Bottom: 10
+    m_Left: 8
+    m_Right: 8
+    m_Top: 8
+    m_Bottom: 8
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 32, y: 32}
-  m_Spacing: {x: 2, y: 2}
+  m_CellSize: {x: 308, y: 20}
+  m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2

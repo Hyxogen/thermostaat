@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     public Queue<Quest> questQueue = new();
     public List<ItemInstance> shopItems;
     public TMPro.TextMeshProUGUI currencyText;
+    public TMPro.TextMeshProUGUI dayText;
     public int currency = 100;
+    public int day = 0;
 
     public GameManager()
     {
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
     public void UpdateUI()
     {
         currencyText.text = "" + currency;
+        dayText.text = "" + day;
     }
 
     public void SetCurrency(int currency)
@@ -49,5 +52,11 @@ public class GameManager : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void NextDay()
+    {
+        day += 1;
+        UpdateUI();
     }
 }
