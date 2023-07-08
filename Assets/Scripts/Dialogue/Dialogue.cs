@@ -172,3 +172,13 @@ public class QuestDoneDialogue : IDialogue
         hero.idleTime = 5;
     }
 }
+
+
+public class HeroDialogue : IDialogue {
+    public IEnumerator<IDialogueBase> Next(GameManager manager) {
+        string name = "Matthew";
+        string you = "You";
+
+        yield return new DialogueText("(Unknown)", "Good day sir!");
+    }
+}

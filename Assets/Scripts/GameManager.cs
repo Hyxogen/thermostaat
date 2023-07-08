@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        heroInventory.SetInventory(hero.inventory);
+        //heroInventory.SetInventory(hero.inventory);
     }
 
     public void StartQuest()
