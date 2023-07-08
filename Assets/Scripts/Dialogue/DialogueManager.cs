@@ -15,7 +15,7 @@ public class DialogueManager : MonoBehaviour
 
     private IDialogueChoice currentChoice;
     private IEnumerator<IDialogueBase> currentDialogue;
-    private Queue<IDialogue> dialogueQueue = new Queue<IDialogue>();
+    private Queue<IDialogue> dialogueQueue = new();
 
     void Start()
     {
@@ -36,9 +36,15 @@ public class DialogueManager : MonoBehaviour
 
     public void StartNewDay()
     {
-        if (gameManager.questList.quests.Count == 0)
+        if (gameManager.questQueue.Count > 0 && Random.value < 0.2)
         {
-            dialogueQueue.Enqueue(new SimpleDialogue());
+            dialogueQueue.Enqueue(gameManager.questQueue.Dequeue());
+        }
+
+        if (gameManager.shopItems.Count > 0 && Random.value < 0.2)
+        {
+            ItemInstance item = gameManager.shopItems[Random.Range(0, gameManager.shopItems.Count)];
+            dialogueQueue.Enqueue(new ShopDialogue(item, "Daan"));
         }
 
         foreach (HeroInstance hero in gameManager.allHeroes)

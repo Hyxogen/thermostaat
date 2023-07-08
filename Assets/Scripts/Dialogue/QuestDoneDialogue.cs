@@ -11,15 +11,6 @@ public class QuestDoneDialogue : IDialogue
 
     public IEnumerator<IDialogueBase> Next(GameManager manager)
     {
-        if (hero.quest.Embark(hero))
-        {
-            yield return new DialogueText(hero.heroData.heroName, "Just so you know, I finished that thing you wanted me to do.");
-        }
-        else
-        {
-            yield return new DialogueText(hero.heroData.heroName, "Fuck fuck fuck fuck fuck fuck fuck.");
-        }
-
-        hero.idleTime = 5;
+        return hero.quest.Embark(manager, hero);
     }
 }

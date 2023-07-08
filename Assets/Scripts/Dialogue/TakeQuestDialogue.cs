@@ -37,7 +37,11 @@ public class TakeQuestDialogue : IDialogue
                 hero.inventory.Add(item);
             }
 
-            yield return new DialogueText(hero.heroData.heroName, "You got it boss.");
+            foreach (IDialogueBase diag in quest.GiveDialogue(manager, hero))
+            {
+                yield return diag;
+            }
+
             hero.StartQuest(quest);
         }
         else

@@ -160,6 +160,9 @@ MonoBehaviour:
     inventory: []
     idleTime: 0
     questTime: -1
+  shopItems:
+  - itemData: {fileID: 11400000, guid: 2b063e5a83620aed8814facae219da66, type: 2}
+  currency: 100
 --- !u!4 &26707510
 Transform:
   m_ObjectHideFlags: 0
@@ -961,7 +964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 541158748441716838, guid: 5d9fb6c62ca229f93a905f8e36f7e364, type: 3}
       propertyPath: items.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 541158748441716838, guid: 5d9fb6c62ca229f93a905f8e36f7e364, type: 3}
       propertyPath: inventory.items.Array.size

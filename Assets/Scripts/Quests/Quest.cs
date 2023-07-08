@@ -1,4 +1,6 @@
-public abstract class Quest
+using System.Collections.Generic;
+
+public abstract class Quest : IDialogue
 {
     public string questName;
     public string description;
@@ -9,7 +11,10 @@ public abstract class Quest
         this.description = description;
     }
 
-    public abstract bool Embark(HeroInstance hero);
+    public abstract IEnumerator<IDialogueBase> Next(GameManager manager);
+    public abstract IEnumerable<IDialogueBase> GiveDialogue(GameManager manager, HeroInstance hero);
+    public abstract bool Test(HeroInstance hero);
+    public abstract IEnumerator<IDialogueBase> Embark(GameManager manager, HeroInstance hero);
 
     public int Duration()
     {
