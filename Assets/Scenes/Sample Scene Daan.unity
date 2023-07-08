@@ -153,16 +153,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questList: {fileID: 1760494588}
-  itemInventory: {fileID: 1217963153}
+  heroInventory: {fileID: 0}
   dialogueManager: {fileID: 1408229892}
   allHeroes:
   - heroData: {fileID: 11400000, guid: c6350ada5a4655b4989e83b40e3b7f71, type: 2}
-    inventory: []
+    inventory:
+      items: []
     idleTime: 0
     questTime: -1
-  shopItems:
-  - itemData: {fileID: 11400000, guid: 2b063e5a83620aed8814facae219da66, type: 2}
-  currency: 100
 --- !u!4 &26707510
 Transform:
   m_ObjectHideFlags: 0
@@ -202,6 +200,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 751251988}
     m_Modifications:
+    - target: {fileID: 2053031408253215165, guid: e6cfcb20623ed618aae81e56a3992679, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2378928655349475170, guid: e6cfcb20623ed618aae81e56a3992679, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1077.5
@@ -217,14 +219,6 @@ PrefabInstance:
     - target: {fileID: 2378928655349475170, guid: e6cfcb20623ed618aae81e56a3992679, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -23.049
-      objectReference: {fileID: 0}
-    - target: {fileID: 3169238878018268635, guid: e6cfcb20623ed618aae81e56a3992679, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -123.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3169238878018268635, guid: e6cfcb20623ed618aae81e56a3992679, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 64.3
       objectReference: {fileID: 0}
     - target: {fileID: 3425934989225481995, guid: e6cfcb20623ed618aae81e56a3992679, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -575,17 +569,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4761328636407505702, guid: e6cfcb20623ed618aae81e56a3992679, type: 3}
   m_PrefabInstance: {fileID: 268228964}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1217963153 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 541158748441716838, guid: 5d9fb6c62ca229f93a905f8e36f7e364, type: 3}
-  m_PrefabInstance: {fileID: 1835205177}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 626cef00b799d42019a60c7764965a06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1323694381 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 299173838729878269, guid: e6cfcb20623ed618aae81e56a3992679, type: 3}
@@ -797,7 +780,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 312, y: 241.6985}
+  m_SizeDelta: {x: 312, y: 241.7}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1760494585
 MonoBehaviour:
@@ -819,8 +802,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7af08b84761144a129d1c2f3180144d2, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 9cc7e93ab4023a84d95621c2c160b23a, type: 3}
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -963,21 +946,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 541158748441716838, guid: 5d9fb6c62ca229f93a905f8e36f7e364, type: 3}
-      propertyPath: items.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 541158748441716838, guid: 5d9fb6c62ca229f93a905f8e36f7e364, type: 3}
       propertyPath: inventory.items.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 541158748441716838, guid: 5d9fb6c62ca229f93a905f8e36f7e364, type: 3}
-      propertyPath: items.Array.data[0].itemData
-      value: 
-      objectReference: {fileID: 11400000, guid: 2b063e5a83620aed8814facae219da66, type: 2}
-    - target: {fileID: 541158748441716838, guid: 5d9fb6c62ca229f93a905f8e36f7e364, type: 3}
       propertyPath: inventory.items.Array.data[0].itemData
       value: 
       objectReference: {fileID: 11400000, guid: 2b063e5a83620aed8814facae219da66, type: 2}
+    - target: {fileID: 6472995221132861051, guid: 5d9fb6c62ca229f93a905f8e36f7e364, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6472995221132861051, guid: 5d9fb6c62ca229f93a905f8e36f7e364, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0e5ee5a5b41df0b1591578fdd43659f2, type: 3}
     - target: {fileID: 6701480677384855013, guid: 5d9fb6c62ca229f93a905f8e36f7e364, type: 3}
       propertyPath: m_Name
       value: Player Inventory
