@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     public HeroInstance hero;
     public QuestListUI questList;
     public ItemInventoryUI heroInventory;
-    public List<QuestData> allQuests;
+    public List<Quest> allQuests;
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     public void StartNamedQuest(string name) {
         Debug.Log("Imagine that the quest " + name + " started");
         Debug.Log(hero.heroData.heroName);
-        QuestData quest = allQuests.Find(quest => quest.questName == name);
+        Quest quest = allQuests.Find(quest => quest.questName == name);
         if (quest == null) {
             Debug.Log("No quest found with the name: " + name);
         } else {
