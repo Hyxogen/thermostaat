@@ -9,9 +9,13 @@ public class QuestListUI : MonoBehaviour
 
     private QuestUI[] slots;
 
-    private void Start()
+    public QuestListUI()
     {
         quests.Add(new CatRescueQuest());
+    }
+
+    private void Start()
+    {
         UpdateQuestList();
     }
 

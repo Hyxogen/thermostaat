@@ -21,6 +21,7 @@ public class DialogueManager : MonoBehaviour
     {
         Reset();
         StartNewDay();
+        NextDialogue();
     }
 
     public void NextDialogue()
@@ -70,20 +71,17 @@ public class DialogueManager : MonoBehaviour
     {
         ClearChoice();
 
-        if (currentDialogue == null)
+        while (currentDialogue == null || !currentDialogue.MoveNext())
         {
             if (dialogueQueue.Count == 0)
             {
                 StartNewDay();
             }
 
-            currentDialogue = new SimpleDialogue().Next(gameManager);
+            currentDialogue = dialogueQueue.Dequeue().Next(gameManager);
         }
 
-        if (currentDialogue.MoveNext())
-        {
-            DisplayDialogue(currentDialogue.Current);
-        }
+        DisplayDialogue(currentDialogue.Current);
     }
 
     void ClearDialogue()
