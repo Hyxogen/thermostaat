@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     public void NextDay()
     {
         day += 1;
+        currency -= 2;
         UpdateUI();
     }
 }

@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     public TMPro.TextMeshProUGUI nameField;
     public TMPro.TextMeshProUGUI dialogueField;
 
+    public GameObject nextButton;
     public GameObject optionAButton;
     public GameObject optionBButton;
     public GameManager gameManager;
@@ -101,6 +102,7 @@ public class DialogueManager : MonoBehaviour
     {
         optionAButton.SetActive(false);
         optionBButton.SetActive(false);
+        nextButton.SetActive(true);
         currentChoice = null;
     }
 
@@ -123,11 +125,12 @@ public class DialogueManager : MonoBehaviour
 
     void DisplayChoiceDialogue(IDialogueChoice option)
     {
-        ClearDialogue();
+        // ClearDialogue();
         optionAButton.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = option.ADesc();
         optionBButton.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = option.BDesc();
         optionAButton.SetActive(true);
         optionBButton.SetActive(true);
+        nextButton.SetActive(false);
         currentChoice = option;
         //optionAButton.transform.GetComponentInChildren<TMPro.field.text = options[i].description;
     }

@@ -11,6 +11,7 @@ public class ItemData : ScriptableObject
 
     public string itemName;
     public Type itemType;
+    public Sprite sprite;
     [TextArea]
     public string description;
     public int minCost;

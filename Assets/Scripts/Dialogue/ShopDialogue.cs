@@ -40,7 +40,7 @@ public class ShopDialogue : IDialogue
         {
             yield return new DialogueText(manager.PlayerName(), "I don't want your " + item.itemData.itemName + ".");
             yield return new DialogueText(merchant, "Yes you do!");
-            yield return new LambdaDialogueChoice("You're right, I do. (" + cost + ")", () => buyItem = true, "No I don't!", () => buyItem = false);
+            yield return new LambdaDialogueChoice("I do? (" + cost + ")", () => buyItem = true, "No I don't!", () => buyItem = false);
         }
 
         if (buyItem)

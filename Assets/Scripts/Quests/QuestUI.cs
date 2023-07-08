@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class QuestUI : MonoBehaviour, IPointerClickHandler
+public class QuestUI : TooltipProvider, IPointerClickHandler
 {
     public TMPro.TextMeshProUGUI text;
     public QuestListUI questList;
@@ -39,5 +39,10 @@ public class QuestUI : MonoBehaviour, IPointerClickHandler
         {
             text.color = new Color(1.0f, 1.0f, 1.0f);
         }
+    }
+
+    public override string GetTooltip()
+    {
+        return quest.description;
     }
 }

@@ -22,7 +22,7 @@ public class CatRescueQuest : Quest
         yield return new DialogueText(questGiver, "Darn, was hoping you saw him");
         yield return new DialogueText(questGiver, "Could you catch him again if he's around?");
 
-        yield return new LambdaDialogueChoice("Yeah ofcource", () => savesCat = true, "No, fuck your cat", () => savesCat = false);
+        yield return new LambdaDialogueChoice("Of course!", () => savesCat = true, "No, fuck your cat", () => savesCat = false);
 
         if (savesCat)
         {
@@ -60,6 +60,8 @@ public class CatRescueQuest : Quest
         if (Test(hero))
         {
             yield return new DialogueText(hero.heroData.heroName, "Just so you know, I finished that thing you wanted me to do.");
+            yield return new DialogueText("", "You got 50 coins!");
+            manager.SetCurrency(manager.currency + 50);
             manager.questQueue.Enqueue(this);
         }
         else

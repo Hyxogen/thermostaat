@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class ItemUI : MonoBehaviour, IPointerClickHandler
+public class ItemUI : TooltipProvider, IPointerClickHandler
 {
     public TMPro.TextMeshProUGUI text;
+    public Image image;
     public ItemInstance item;
     public bool selected = false;
 
@@ -21,11 +23,14 @@ public class ItemUI : MonoBehaviour, IPointerClickHandler
 
         if (item != null)
         {
+            image.enabled = true;
+            image.sprite = item.itemData.sprite;
             text.text = item.itemData.itemName;
         }
         else
         {
-            text.text = "Empty";
+            text.text = "";
+            image.enabled = false;
         }
     }
 
@@ -40,6 +45,18 @@ public class ItemUI : MonoBehaviour, IPointerClickHandler
         else
         {
             text.color = new Color(1.0f, 1.0f, 1.0f);
+        }
+    }
+
+    public override string GetTooltip()
+    {
+        if (item != null)
+        {
+            return item.itemData.description;
+        }
+        else
+        {
+            return "";
         }
     }
 }
