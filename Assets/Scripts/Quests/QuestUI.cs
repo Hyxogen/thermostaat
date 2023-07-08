@@ -11,7 +11,7 @@ public class QuestUI : MonoBehaviour, IPointerClickHandler
     {
         if (quest != null)
         {
-            questList.currentQuest = quest;
+            questList.SetCurrentQuest(quest);
         }
     }
 
@@ -26,6 +26,18 @@ public class QuestUI : MonoBehaviour, IPointerClickHandler
         else
         {
             text.text = "Empty";
+        }
+    }
+
+    public void Select(bool selected)
+    {
+        if (selected)
+        {
+            text.color = new Color(0.0f, 1.0f, 0.0f);
+        }
+        else
+        {
+            text.color = new Color(1.0f, 1.0f, 1.0f);
         }
     }
 }

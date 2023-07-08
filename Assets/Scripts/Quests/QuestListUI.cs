@@ -39,4 +39,33 @@ public class QuestListUI : MonoBehaviour
             slots[i].SetItem(quests[i]);
         }
     }
+
+    public void AddQuest(Quest quest)
+    {
+        this.quests.Add(quest);
+        UpdateQuestList();
+    }
+
+    public void SetCurrentQuest(Quest quest)
+    {
+        currentQuest = quest;
+
+        foreach (QuestUI slot in slots)
+        {
+            slot.Select(slot.quest == quest);
+        }
+    }
+
+    public Quest TakeQuest()
+    {
+        if (currentQuest != null)
+        {
+            quests.Remove(currentQuest);
+            UpdateQuestList();
+        }
+
+        Quest returnQuest = currentQuest;
+        currentQuest = null;
+        return returnQuest;
+    }
 }
