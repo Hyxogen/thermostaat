@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -8,50 +9,34 @@ public class DialogueManager : MonoBehaviour
     public TMPro.TextMeshProUGUI nameField;
     public TMPro.TextMeshProUGUI dialogueField;
 
-    public GameObject[] optionButtons;
+    public GameObject optionAButton;
+    public GameObject optionBButton;
+    public GameManager gameManager;
 
-    public DialogueTree current;
-    private Queue<(string, string)> dialogueQueue = new Queue<(string, string)>();
-    private List<DialogueOption> options = new List<DialogueOption>();
+    private IDialogueChoice currentChoice;
+    private IEnumerator<IDialogueBase> currentDialogue;
+    private Queue<IDialogue> dialogueQueue = new Queue<IDialogue>();
 
-    void Start()
-    {
-        PlayDialogue(current);
-    }
-
-    void Update()
-    {
-        
+    void Start() {
+        Reset();
     }
 
     public void NextDialogue() {
-        if (current == null) {
-            Debug.LogWarning("No more dialogue available");
+        if (currentChoice != null) {
             return;
         }
+        NextDialogueAndClearChoice();
+    }
 
-        if (dialogueQueue.Count > 0) {
-            (string name, string text) pair = dialogueQueue.Dequeue();
-            Show(pair.name, pair.text);
-        } else if (options.Count > 0) {
-            ShowOptions();
-        } else {
-            Clear();
-            Show("Me", "No more text to display");
+    void NextDialogueAndClearChoice() {
+        ClearChoice();
+        if (currentDialogue == null) {
+            currentDialogue = new SimpleDialogue().Next(gameManager);
         }
-    }
 
-    void Show(string name, string text) {
-        nameField.text = name;
-        dialogueField.text = text;
-    }
-
-    void ShowOptions() {
-            for (int i = 0; i < options.Count; ++i) {
-                TMPro.TextMeshProUGUI field = optionButtons[i].transform.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-                field.text = options[i].description;
-                optionButtons[i].gameObject.SetActive(true);
-            }
+        if (currentDialogue.MoveNext()) {
+            DisplayDialogue(currentDialogue.Current);
+        }
     }
 
     void ClearDialogue() {
@@ -59,42 +44,63 @@ public class DialogueManager : MonoBehaviour
         dialogueField.text = "";
     }
 
-    void ClearOptions() {
-        options.Clear();
-        foreach (GameObject option in optionButtons) {
-            option.SetActive(false);
-        }
+    void ClearChoice() {
+        optionAButton.SetActive(false);
+        optionBButton.SetActive(false);
+        currentChoice = null;
     }
 
-    void Clear() {
+    void Reset() {
         ClearDialogue();
-        ClearOptions();
+        ClearChoice();
     }
 
-    public void QueueDialogue(DialogueTree tree) {
-        foreach (Dialogue dialogue in tree.dialogues) {
-            foreach (string text in dialogue.dialogue) {
-                dialogueQueue.Enqueue((dialogue.name, text));
-            }
+    void DisplayTextDialogue(string actorName, string dialogue) {
+        nameField.text = actorName;
+        dialogueField.text = dialogue;
+    }
+
+    void DisplayTextDialogue(DialogueText textDiag) {
+        DisplayTextDialogue(textDiag.actorName, textDiag.dialogue);
+    }
+
+    void DisplayChoiceDialogue(IDialogueChoice option) {
+        ClearDialogue();
+        optionAButton.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = option.ADesc();
+        optionBButton.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = option.BDesc();
+        optionAButton.SetActive(true);
+        optionBButton.SetActive(true);
+        currentChoice = option;
+        //optionAButton.transform.GetComponentInChildren<TMPro.field.text = options[i].description;
+    }
+
+    void DisplayDialogue(IDialogueBase dialogue) {
+        if (dialogue is DialogueText) {
+            DisplayTextDialogue((DialogueText) dialogue);
+        } else if (dialogue is IDialogueChoice) {
+            DisplayChoiceDialogue((IDialogueChoice) dialogue);
+        } else {
+            Debug.LogError("Unknown dialogue type");
         }
     }
 
-    public void PlayDialogue(DialogueTree tree) {
-        Clear();
-
-        foreach (DialogueOption option in tree.options) {
-            options.Add(option);
-        }
-
-        QueueDialogue(tree);
-        NextDialogue();
-    }
-    
     public void ChooseA() {
-        PlayDialogue(current.options[0].tree);
+        if (currentChoice != null) {
+            Debug.Log("Chose A");
+            currentChoice.OptionA();
+            NextDialogueAndClearChoice();
+        } else {
+            Debug.LogError("Currently not displaying a option");
+        }
     }
 
     public void ChooseB() {
-        PlayDialogue(current.options[1].tree);
+        if (currentChoice != null) {
+            Debug.Log("Chose B");
+            currentChoice.OptionB();
+            NextDialogueAndClearChoice();
+        } else {
+            Debug.LogError("Currently not displaying a option");
+        }
     }
 }
