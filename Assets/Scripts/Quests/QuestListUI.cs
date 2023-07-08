@@ -9,11 +9,6 @@ public class QuestListUI : MonoBehaviour
 
     private QuestUI[] slots;
 
-    public QuestListUI()
-    {
-        quests.Add(new CatRescueQuest());
-    }
-
     private void Start()
     {
         UpdateQuestList();
@@ -25,7 +20,7 @@ public class QuestListUI : MonoBehaviour
         {
             foreach (QuestUI slot in slots)
             {
-                Destroy(slot);
+                Destroy(slot.gameObject);
             }
         }
 

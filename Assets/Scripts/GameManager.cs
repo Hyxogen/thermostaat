@@ -4,13 +4,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public QuestListUI questList;
-    public ItemInventoryUI heroInventory;
+    public ItemInventoryUI itemInventory;
     public DialogueManager dialogueManager;
     public List<HeroInstance> allHeroes;
-    public List<Quest> allQuests;
-
-    private void Start()
-    {
-        //heroInventory.SetInventory(hero.inventory);
-    }
 }

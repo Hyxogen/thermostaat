@@ -1,11 +1,11 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ItemInventoryUI : MonoBehaviour
 {
-    public ItemInventory inventory;
+    public List<ItemInstance> items = new();
     public int slotsCount;
     public GameObject slotGameObject;
-    public ItemInventoryUI other;
 
     private ItemUI[] slots;
 
@@ -18,7 +18,6 @@ public class ItemInventoryUI : MonoBehaviour
             Vector3 position = new Vector3(0.0f, i * -1.0f, 0.0f);
             GameObject slot = Instantiate(slotGameObject, position, Quaternion.identity, transform);
             slots[i] = slot.GetComponent<ItemUI>();
-            slots[i].inventory = this;
         }
 
         UpdateInventory();
@@ -33,9 +32,9 @@ public class ItemInventoryUI : MonoBehaviour
         
         for (int i = 0; i < slots.Length; i++)
         {
-            if (i < inventory.items.Count)
+            if (i < items.Count)
             {
-                slots[i].SetItem(inventory.items[i]);
+                slots[i].SetItem(items[i]);
             }
             else
             {
@@ -44,21 +43,33 @@ public class ItemInventoryUI : MonoBehaviour
         }
     }
 
-    public void SetInventory(ItemInventory inventory)
-    {
-        this.inventory = inventory;
-        UpdateInventory();
-    }
-
     public void AddItem(ItemInstance item)
     {
-        inventory.items.Add(item);
+        items.Add(item);
         UpdateInventory();
     }
 
     public void RemoveItem(ItemInstance item)
     {
-        inventory.items.Remove(item);
+        items.Remove(item);
         UpdateInventory();
+    }
+
+    public List<ItemInstance> TakeItems()
+    {
+        List<ItemInstance> returnItems = new();
+
+        foreach (ItemUI item in slots)
+        {
+            if (item.selected)
+            {
+                item.Select(false);
+                items.Remove(item.item);
+                returnItems.Add(item.item);
+            }
+        }
+
+        UpdateInventory();
+        return returnItems;
     }
 }

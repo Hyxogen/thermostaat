@@ -10,4 +10,9 @@ public abstract class Quest
     }
 
     public abstract bool Embark(HeroInstance hero);
+
+    public int Duration()
+    {
+        return 5;
+    }
 }

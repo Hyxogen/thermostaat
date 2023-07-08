@@ -9,7 +9,7 @@ public class CatRescueQuest : Quest
 
     public override bool Embark(HeroInstance hero)
     {
-        foreach (ItemInstance item in hero.inventory.items)
+        foreach (ItemInstance item in hero.inventory)
         {
             if (item.itemData.itemType == ItemData.Type.TUNA)
             {
