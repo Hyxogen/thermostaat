@@ -3,14 +3,15 @@ using System.Collections.Generic;
 
 public class QuestListUI : MonoBehaviour
 {
-    public List<QuestInstance> quests = new();
-    public QuestInstance currentQuest;
+    public List<Quest> quests = new();
+    public Quest currentQuest;
     public GameObject slotGameObject;
 
     private QuestUI[] slots;
 
     private void Start()
     {
+        quests.Add(new CatRescueQuest());
         UpdateQuestList();
     }
 

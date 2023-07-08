@@ -5,7 +5,7 @@ public class QuestUI : MonoBehaviour, IPointerClickHandler
 {
     public TMPro.TextMeshProUGUI text;
     public QuestListUI questList;
-    public QuestInstance quest;
+    public Quest quest;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -15,13 +15,13 @@ public class QuestUI : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public void SetItem(QuestInstance quest)
+    public void SetItem(Quest quest)
     {
         this.quest = quest;
 
         if (quest != null)
         {
-            text.text = quest.questData.questName;
+            text.text = quest.questName;
         }
         else
         {
