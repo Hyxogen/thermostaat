@@ -11,7 +11,7 @@ public class CatRescueQuest : Quest
     {
         foreach (ItemInstance item in hero.inventory.items)
         {
-            if (item.itemData.itemName == "Tuna")
+            if (item.itemData.itemType == ItemData.Type.TUNA)
             {
                 return true;
             }

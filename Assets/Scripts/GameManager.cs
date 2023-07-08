@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     public HeroInstance hero;
     public QuestListUI questList;
     public ItemInventoryUI heroInventory;
+    public DialogueManager dialogueManager;
+    public List<HeroInstance> allHeroes;
     public List<Quest> allQuests;
 
     private void Start()
