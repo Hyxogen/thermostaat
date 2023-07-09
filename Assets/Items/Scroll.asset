@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59f92ca3aca2e090b3b53c4f3641360, type: 3}
+  m_Name: Scroll
+  m_EditorClassIdentifier: 
+  itemName: Boom Scroll
+  itemType: 3
+  sprite: {fileID: 21300000, guid: a8f04b36c545abc46a09c34c8575fdf5, type: 3}
+  description: A long scroll with many words that you don't understand. At the bottom
+    is a warning written in large red letters that just says "BOOM".
+  minCost: 0
+  maxCost: 0

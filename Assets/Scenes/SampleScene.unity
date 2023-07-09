@@ -205,6 +205,8 @@ MonoBehaviour:
     itemData: {fileID: 11400000, guid: ee45fc98ccda474a6b4c4b9e19ee4af4, type: 2}
   acid:
     itemData: {fileID: 11400000, guid: 39a5c39eac04f592bbae4b61f8304661, type: 2}
+  scroll:
+    itemData: {fileID: 11400000, guid: 63cf994e7913caed488c5d8ab67ab0fc, type: 2}
 --- !u!1 &175789730
 GameObject:
   m_ObjectHideFlags: 0

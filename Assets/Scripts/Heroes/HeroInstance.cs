@@ -20,4 +20,20 @@ public class HeroInstance
     {
         idleTime = Random.Range(10, 25);
     }
+
+
+    public string GetPreferredWeaponName()
+    {
+        switch (heroData.heroType)
+        {
+            case HeroData.Type.BARD:
+                return "lute";
+            case HeroData.Type.KNIGHT:
+                return "sword";
+            case HeroData.Type.RANGER:
+                return "bow";
+            default:
+                return null;
+        }
+    }
 }
