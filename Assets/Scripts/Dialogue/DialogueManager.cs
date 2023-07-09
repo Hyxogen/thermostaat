@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject optionBButton;
     public GameManager gameManager;
     public float typeSpeed = 0.04f;
+    public AudioSource audioSource;
 
     private IDialogueChoice currentChoice;
     private IEnumerator<IDialogueBase> currentDialogue;
@@ -131,6 +132,9 @@ public class DialogueManager : MonoBehaviour
                 break;
             }
             dialogueField.text += ch;
+            if (audioSource != null) {
+                audioSource.Play();
+            }
             yield return new WaitForSeconds(speed);
         }
         isTyping = false;
