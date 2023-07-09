@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b59f92ca3aca2e090b3b53c4f3641360, type: 3}
-  m_Name: Magic Orb
+  m_Name: Scroll
   m_EditorClassIdentifier: 
-  itemName: Magic Orb
+  itemName: Boom Scroll
   itemType: 3
-  sprite: {fileID: 21300000, guid: ae14daf5a825670bdadac1e176a436f8, type: 3}
-  description: It's pulsating
+  sprite: {fileID: 21300000, guid: a8f04b36c545abc46a09c34c8575fdf5, type: 3}
+  description: A long scroll with many words that you don't understand. At the bottom
+    is a warning written in large red letters that just says "BOOM".
   minCost: 0
   maxCost: 0

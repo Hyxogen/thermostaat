@@ -28,7 +28,7 @@ public class SlimeBasementQuest : Quest
         yield return new DialogueText(playerIdent, "Acid? What in the lord's name do you need acid for?", SPRITE_NAME);
         yield return new DialogueText(questGiver, "They're getting everywhere! Please give me some acid!", SPRITE_NAME);
         yield return new DialogueText(playerIdent, "Who's getting everywhere?", SPRITE_NAME);
-        yield return new DialogueText(questGiver, "They're so gross (rilling), please give me some acid right now!", SPRITE_NAME);
+        yield return new DialogueText(questGiver, "They're so gross *rills*, please give me some acid right now!", SPRITE_NAME);
         yield return new DialogueText(playerIdent, "What are you talking about", SPRITE_NAME);
         yield return new DialogueText(questGiver, "*Reaching over the counter* I know you got it, please give it to me!", SPRITE_NAME);
         yield return new DialogueText(playerIdent, "*grabbing " + questGiver + "'s arm* Could you just anser my question for pete's sake!", SPRITE_NAME);

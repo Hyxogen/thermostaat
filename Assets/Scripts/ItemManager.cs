@@ -7,6 +7,7 @@ public class ItemManager : MonoBehaviour
     public ItemInstance ladder;
     public ItemInstance acid;
     public ItemInstance orb;
+    public ItemInstance scroll;
 
     public static ItemManager Instance()
     {

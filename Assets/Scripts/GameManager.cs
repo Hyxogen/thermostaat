@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     public GameManager()
     {
+        questQueue.Enqueue(new DragonQuest());
         questQueue.Enqueue(new SlimeBasementQuest("Stanley"));
         questQueue.Enqueue(new InterestingLocationQuest("Brandon"));
         questQueue.Enqueue(new CatRescueQuest("David", CatRescueQuest.Variant.NORMAL));
@@ -46,6 +47,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        itemInventory.AddItem(ItemManager.Instance().scroll);
+
         UpdateUI();
     }
 

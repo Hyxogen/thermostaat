@@ -10,6 +10,7 @@ public class ItemData : ScriptableObject
         LADDER,
         ACID,
         MAGIC_ORB,
+        SCROLL,
     }
 
     public string itemName;
