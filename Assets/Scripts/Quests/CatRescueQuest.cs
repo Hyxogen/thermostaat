@@ -105,6 +105,6 @@ public class CatRescueQuest : Quest
             manager.questList.AddQuest(this);
         }
 
-        hero.idleTime = 5;
+        hero.Idle();
     }
 }
