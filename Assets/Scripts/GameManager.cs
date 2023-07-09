@@ -91,10 +91,10 @@ public class GameManager : MonoBehaviour
 
         switch (Day)
         {
-            case 50:
+            case 25:
                 dialogueManager.dialogueQueue.Enqueue(new FindScrollDialogue());
                 break;
-            case 100:
+            case 50:
                 questQueue.Enqueue(new DragonQuest());
                 break;
             default:
