@@ -121,15 +121,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Hero 01
     originalName: 
-    pivot: {x: 0.4604811, y: 0}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 291
-      height: 458
+      width: 512
+      height: 493
     spriteID: 6922e6b11a00b8290ace5d3ddfcc2d6a
     spriteBone: []
     spriteOutline: []
@@ -151,10 +151,10 @@ ScriptedImporter:
     - name: Hero 01
       frameIndex: 0
       cellRect:
-        x: 122
+        x: 0
         y: 0
-        width: 291
-        height: 458
+        width: 512
+        height: 493
       spriteId: 6922e6b11a00b8290ace5d3ddfcc2d6a
     linkedCells: []
     parentIndex: -1

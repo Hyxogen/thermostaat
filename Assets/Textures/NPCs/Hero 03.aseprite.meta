@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dd239c4cb2b12a23eb03d2f10288f4c1
+guid: e74585465fcae4ec88892db81349fea6
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Head
+  - name: Hero 03
     originalName: 
-    pivot: {x: 0.49052134, y: 0}
+    pivot: {x: 0.48706895, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 422
-      height: 458
-    spriteID: 0b854e8cdec5f668f82937386096fef5
+      width: 464
+      height: 512
+    spriteID: 25e3b990e055cf1a68c7985c26b690d8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,20 +142,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1403077920
-    name: Head
+    guid: -114272997
+    name: Hero 03
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Head
+    - name: Hero 03
       frameIndex: 0
       cellRect:
-        x: 49
+        x: 30
         y: 0
-        width: 422
-        height: 458
-      spriteId: 0b854e8cdec5f668f82937386096fef5
+        width: 464
+        height: 512
+      spriteId: 25e3b990e055cf1a68c7985c26b690d8
     linkedCells: []
     parentIndex: -1
   platformSettings: []

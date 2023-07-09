@@ -13,10 +13,14 @@ public class DialogueManager : MonoBehaviour
     public GameObject optionAButton;
     public GameObject optionBButton;
     public GameManager gameManager;
+    public float typeSpeed = 0.04f;
 
     private IDialogueChoice currentChoice;
     private IEnumerator<IDialogueBase> currentDialogue;
     private Queue<IDialogue> dialogueQueue = new();
+    private Coroutine typingCoroutine;
+    private bool skipTyping = false;
+    private bool isTyping = false;
 
     void Start()
     {
@@ -29,6 +33,10 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentChoice != null)
         {
+            return;
+        }
+        if (isTyping) {
+            skipTyping = true;
             return;
         }
 
@@ -112,10 +120,33 @@ public class DialogueManager : MonoBehaviour
         ClearChoice();
     }
 
+    IEnumerator TypeText(string dialogue, float speed)
+    {
+        isTyping = true;
+        foreach (char ch in dialogue.ToCharArray())
+        {
+            if (skipTyping) {
+                skipTyping = false;
+                dialogueField.text = dialogue;
+                break;
+            }
+            dialogueField.text += ch;
+            yield return new WaitForSeconds(speed);
+        }
+        isTyping = false;
+    }
+
     void DisplayTextDialogue(string actorName, string dialogue)
     {
+        ClearDialogue();
         nameField.text = actorName;
-        dialogueField.text = dialogue;
+        //dialogueField.text = dialogue;
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        typingCoroutine = StartCoroutine(TypeText(dialogue, typeSpeed));
     }
 
     void DisplayTextDialogue(DialogueText textDiag)
