@@ -7,6 +7,7 @@ public class ItemData : ScriptableObject
     public enum Type
     {
         TUNA,
+        LADDER,
     }
 
     public string itemName;

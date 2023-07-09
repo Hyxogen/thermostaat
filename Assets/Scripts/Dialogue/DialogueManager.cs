@@ -53,10 +53,23 @@ public class DialogueManager : MonoBehaviour
             dialogueQueue.Enqueue(gameManager.questQueue.Dequeue());
         }
 
-        if (gameManager.shopItems.Count > 0 && Random.value < 0.2)
+        if (gameManager.shopItems.Count > 0 && Random.value < 0.1)
         {
             ItemInstance item = gameManager.shopItems[Random.Range(0, gameManager.shopItems.Count)];
-            dialogueQueue.Enqueue(new ShopDialogue(item, "Jeffrey", "Peasant01"));
+
+            if (Random.value < 0.4)
+            {
+                dialogueQueue.Enqueue(new ShopDialogue(item, "Jeffrey", 2, "Peasant01"));
+            }
+            else
+            {
+                dialogueQueue.Enqueue(new ShopDialogue(item, "Jeffrey", 1, "Peasant01"));
+            }
+        }
+
+        if (gameManager.itemInventory.items.Find(item => item.itemData.itemType == ItemData.Type.LADDER) == null && Random.value < 0.1)
+        {
+            dialogueQueue.Enqueue(new LadderDialogue());
         }
 
         foreach (HeroInstance hero in gameManager.allHeroes)

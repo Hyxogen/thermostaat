@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 26707510}
   - component: {fileID: 26707509}
+  - component: {fileID: 26707511}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -163,6 +164,7 @@ MonoBehaviour:
     questTime: -1
   shopItems:
   - itemData: {fileID: 11400000, guid: 2b063e5a83620aed8814facae219da66, type: 2}
+  - itemData: {fileID: 11400000, guid: ee45fc98ccda474a6b4c4b9e19ee4af4, type: 2}
   currencyText: {fileID: 1501206284}
   dayText: {fileID: 1261336282}
   currency: 100
@@ -182,6 +184,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &26707511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26707508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a2179292dae9379977d046e48a364e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ladder:
+    itemData: {fileID: 0}
 --- !u!1 &175789730
 GameObject:
   m_ObjectHideFlags: 0
