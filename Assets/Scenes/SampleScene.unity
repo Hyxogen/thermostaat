@@ -166,7 +166,7 @@ MonoBehaviour:
   - itemData: {fileID: 11400000, guid: 2b063e5a83620aed8814facae219da66, type: 2}
   currencyText: {fileID: 1501206284}
   dayText: {fileID: 1261336282}
-  currency: 100
+  currency: 200
   day: 0
 --- !u!4 &26707510
 Transform:
