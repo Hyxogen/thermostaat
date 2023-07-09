@@ -4,4 +4,5 @@ using UnityEngine;
 public class HeroData : ScriptableObject
 {
     public string heroName;
+    public string spriteName;
 }

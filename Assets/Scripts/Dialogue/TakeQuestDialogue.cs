@@ -14,11 +14,11 @@ public class TakeQuestDialogue : IDialogue
         bool giveQuest = false;
         Quest quest = null;
 
-        yield return new DialogueText(hero.heroData.heroName, "I'm looking for work.");
+        yield return new DialogueText(hero.heroData.heroName, "I'm looking for work.", hero.heroData.spriteName);
 
         while (quest == null)
         {
-            yield return new LambdaDialogueChoice("Start Quest", () => giveQuest = true, "I don't have any", () => giveQuest = false);
+            yield return new LambdaDialogueChoice("Start Quest", () => giveQuest = true, "I don't have any", () => giveQuest = false, hero.heroData.spriteName);
 
             if (giveQuest)
             {
@@ -46,7 +46,7 @@ public class TakeQuestDialogue : IDialogue
         }
         else
         {
-            yield return new DialogueText(hero.heroData.heroName, "Very well.");
+            yield return new DialogueText(hero.heroData.heroName, "Very well.", hero.heroData.spriteName);
             hero.idleTime = 5;
         }
     }

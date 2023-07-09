@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
 
     public TMPro.TextMeshProUGUI nameField;
     public TMPro.TextMeshProUGUI dialogueField;
+    public Image npcImage;
 
     public GameObject nextButton;
     public GameObject optionAButton;
@@ -54,7 +56,7 @@ public class DialogueManager : MonoBehaviour
         if (gameManager.shopItems.Count > 0 && Random.value < 0.2)
         {
             ItemInstance item = gameManager.shopItems[Random.Range(0, gameManager.shopItems.Count)];
-            dialogueQueue.Enqueue(new ShopDialogue(item, "Jeffrey"));
+            dialogueQueue.Enqueue(new ShopDialogue(item, "Jeffrey", "Peasant01"));
         }
 
         foreach (HeroInstance hero in gameManager.allHeroes)
@@ -133,6 +135,7 @@ public class DialogueManager : MonoBehaviour
             }
             dialogueField.text += ch;
             if (audioSource != null && !audioSource.isPlaying) {
+                audioSource.pitch = Random.Range(0.8f, 1.2f);
                 audioSource.Play();
             }
             yield return new WaitForSeconds(speed);
@@ -170,8 +173,32 @@ public class DialogueManager : MonoBehaviour
         //optionAButton.transform.GetComponentInChildren<TMPro.field.text = options[i].description;
     }
 
+    void DisplayImage(string spriteName)
+    {
+        if (spriteName == null)
+        {
+            npcImage.gameObject.SetActive(false);
+        }
+        else
+        {
+            NamedSprite sprite = gameManager.spriteManager.GetSprite(spriteName);
+
+            if (sprite == null)
+            {
+                Debug.LogError("Could not find sprite: " + spriteName);
+                npcImage.gameObject.SetActive(false);
+            }
+            else 
+            {
+                npcImage.sprite = sprite.sprite;
+                npcImage.gameObject.SetActive(true);
+            }
+        }
+    }
+
     void DisplayDialogue(IDialogueBase dialogue)
     {
+        DisplayImage(dialogue.GetSpriteName());
         if (dialogue is DialogueText)
         {
             DisplayTextDialogue((DialogueText)dialogue);

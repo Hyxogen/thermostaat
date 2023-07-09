@@ -155,6 +155,7 @@ MonoBehaviour:
   questList: {fileID: 1760494588}
   itemInventory: {fileID: 1217963153}
   dialogueManager: {fileID: 1408229892}
+  spriteManager: {fileID: 216762696}
   allHeroes:
   - heroData: {fileID: 11400000, guid: c6350ada5a4655b4989e83b40e3b7f71, type: 2}
     inventory: []
@@ -403,6 +404,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &216762693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 216762695}
+  - component: {fileID: 216762696}
+  m_Layer: 0
+  m_Name: Sprite Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &216762695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216762693}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 752.958, y: 491.30695, z: -1.882255}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &216762696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216762693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 059a1955f37d51cc986405838382549e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - name: Peasant03
+    sprite: {fileID: 21300000, guid: 5d878582b57016d7fa524d8d8a6ef3ef, type: 3}
+  - name: Hero01
+    sprite: {fileID: 21300000, guid: 291837b242f8b4dc78847142c0054518, type: 3}
+  - name: Peasant01
+    sprite: {fileID: 21300000, guid: c0d8b3dcb0951f792b449ba3350528b0, type: 3}
 --- !u!224 &235231551 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8491831186870044743, guid: 5d9fb6c62ca229f93a905f8e36f7e364, type: 3}
@@ -1317,6 +1369,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6806444929641942569, guid: 33abdf4452736465289ccc4301e2c946, type: 3}
+      propertyPath: npcImage
+      value: 
+      objectReference: {fileID: 1832812996}
+    - target: {fileID: 6806444929641942569, guid: 33abdf4452736465289ccc4301e2c946, type: 3}
       propertyPath: nameField
       value: 
       objectReference: {fileID: 211580108}
@@ -1344,6 +1400,10 @@ PrefabInstance:
       propertyPath: optionBButton
       value: 
       objectReference: {fileID: 341586241}
+    - target: {fileID: 6806444929641942569, guid: 33abdf4452736465289ccc4301e2c946, type: 3}
+      propertyPath: defaultSpriteName
+      value: Peasant03
+      objectReference: {fileID: 0}
     - target: {fileID: 6806444929641942569, guid: 33abdf4452736465289ccc4301e2c946, type: 3}
       propertyPath: optionButtons.Array.data[0]
       value: 
@@ -1850,7 +1910,7 @@ GameObject:
   - component: {fileID: 1832812997}
   - component: {fileID: 1832812996}
   m_Layer: 5
-  m_Name: Image
+  m_Name: NPC Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

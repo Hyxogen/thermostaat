@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Chen
   m_EditorClassIdentifier: 
   heroName: Chen
+  spriteName: Hero01

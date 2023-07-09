@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public QuestListUI questList;
     public ItemInventoryUI itemInventory;
     public DialogueManager dialogueManager;
+    public SpriteManager spriteManager;
     public List<HeroInstance> allHeroes;
     public Queue<Quest> questQueue = new();
     public List<ItemInstance> shopItems;
