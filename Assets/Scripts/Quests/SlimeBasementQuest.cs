@@ -4,7 +4,7 @@ using UnityEngine;
 public class SlimeBasementQuest : Quest
 {
 
-    private static string QUEST_NAME = "Slimy basement";
+    private static string QUEST_NAME = "Acidious business";
     private static string DESCRIPTION = "Get me some acid!";
     private static string SPRITE_NAME = "Peasant01";
 
@@ -120,5 +120,31 @@ public class SlimeBasementQuest : Quest
         yield return new DialogueText(hero.heroData.heroName, "Anyway, I'm out of here. Holler me when you need me again", hero.heroData.spriteName);
 
         hero.Idle();
+    }
+    
+    public override IEnumerable<IDialogueBase> QuestCompleted(GameManager manager)
+    {
+        string playerIdent = manager.PlayerIdentifier();
+        string playerName = manager.PlayerName();
+
+        yield return new DialogueText(questGiver, playerName + "! Do you have the acid for me yet?!", SPRITE_NAME);
+        yield return new DialogueText(questGiver, "The slimes are starting to climb out of my basement!", SPRITE_NAME);
+
+        bool sellsAcid = false;
+        int price = 20;
+        yield return new LambdaDialogueChoice("Yes (+" + price + ")", () => sellsAcid = true, "I couldn't find it", () => sellsAcid = false, SPRITE_NAME);
+
+        if (sellsAcid)
+        {
+            yield return new DialogueText(questGiver, "You're amazing " + playerName + "!", SPRITE_NAME);
+            yield return new DialogueText(questGiver, "*rushing off* Gonna go finally clean my basement!", SPRITE_NAME);
+            manager.Currency += price;
+            yield return new DialogueText("", "You received " + price + " coins!");
+        }
+        else
+        {
+            yield return new DialogueText(questGiver, "If you can't get it, who else can?!", SPRITE_NAME);
+            yield return new DialogueText(questGiver, "*rushing off* Perhaps Peter can help me", SPRITE_NAME);
+        }
     }
 }

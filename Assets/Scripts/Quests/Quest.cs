@@ -16,12 +16,12 @@ public abstract class Quest : IDialogue
     public abstract IEnumerable<IDialogueBase> GiveDialogue(GameManager manager, HeroInstance hero);
     public abstract IEnumerable<IDialogueBase> Embark(GameManager manager, HeroInstance hero);
 
-    public IEnumerable<IDialogueBase> QuestCompleted(GameManager manager)
+    public virtual IEnumerable<IDialogueBase> QuestCompleted(GameManager manager)
     {
         return Enumerable.Empty<IDialogueBase>();
     }
 
-    public int Duration()
+    public virtual int Duration()
     {
         return 5;
     }
