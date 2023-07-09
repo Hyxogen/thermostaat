@@ -34,7 +34,7 @@ public class InterestingLocationQuest : Quest
         yield return new DialogueText(questGiver, "Could you point me into the direction of the adventurers guild?");
 
         bool takeQuest = false;
-        yield return new LambdaDialogueChoice("*point in right direction*", () => takeQuest = false, "*point in wrong direction*", () => takeQuest = true);
+        yield return new LambdaDialogueChoice("*point in right direction*", () => takeQuest = false, "*point in wrong direction*", () => takeQuest = true, SPRITE_NAME);
 
         yield return new DialogueText(questGiver, "Cheers! See you around", SPRITE_NAME);
         if (takeQuest){

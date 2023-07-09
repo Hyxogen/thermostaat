@@ -31,7 +31,7 @@ public class SlimeBasementQuest : Quest
         yield return new DialogueText(questGiver, "They're so gross *rills*, please give me some acid right now!", SPRITE_NAME);
         yield return new DialogueText(playerIdent, "What are you talking about", SPRITE_NAME);
         yield return new DialogueText(questGiver, "*Reaching over the counter* I know you got it, please give it to me!", SPRITE_NAME);
-        yield return new DialogueText(playerIdent, "*grabbing " + questGiver + "'s arm* Could you just anser my question for pete's sake!", SPRITE_NAME);
+        yield return new DialogueText(playerIdent, "*grabbing " + questGiver + "'s arm* Could you just answer my question for pete's sake!", SPRITE_NAME);
         yield return new DialogueText(questGiver, "Slimes ofcourse! Now give me that acid! *attempting to reach futher*", SPRITE_NAME);
         yield return new DialogueText(playerIdent, "Could you not go through my stuff thank you very much?!", SPRITE_NAME);
 
@@ -112,7 +112,7 @@ public class SlimeBasementQuest : Quest
         yield return new DialogueText("(Unknown)", "*silent voice* Hey");
         yield return new DialogueText(playerIdent, "(?)");
         yield return new DialogueText(hero.heroData.heroName, "I found the stuffs", hero.heroData.spriteName);
-        yield return new DialogueText(hero.heroData.heroName, "You arent like using this personally, right?", hero.heroData.spriteName);
+        yield return new DialogueText(hero.heroData.heroName, "You aren't like using this personally, right?", hero.heroData.spriteName);
 
         yield return new DialogueText("", "You received 1 bottle of acid!", hero.heroData.spriteName);
         manager.itemInventory.AddItem(new ItemInstance(ItemManager.Instance().acid));
