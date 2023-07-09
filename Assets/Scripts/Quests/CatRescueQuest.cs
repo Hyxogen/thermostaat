@@ -56,7 +56,7 @@ public class CatRescueQuest : Quest
     {
         Variant variant = Variant.NORMAL;
 
-        if (manager.day >= 30 && Random.value < 0.5)
+        if (manager.Day >= 30 && Random.value < 0.5)
         {
             variant = Variant.LADDER;
         }
@@ -75,7 +75,7 @@ public class CatRescueQuest : Quest
                 hero.inventory.Remove(tuna);
                 yield return new DialogueText(hero.heroData.heroName, "Just so you know, I found the cat.", hero.heroData.spriteName);
                 yield return new DialogueText("", "You got 50 coins!");
-                manager.SetCurrency(manager.currency + 50);
+                manager.Currency += 50;
                 AddNewCatQuest(manager, this);
             }
             else if (variant == Variant.LADDER)
@@ -88,7 +88,7 @@ public class CatRescueQuest : Quest
                     hero.inventory.Remove(ladder);
                     yield return new DialogueText(hero.heroData.heroName, "I found the cat up in a tree somewhere.", hero.heroData.spriteName);
                     yield return new DialogueText("", "You got 75 coins!");
-                    manager.SetCurrency(manager.currency + 75);
+                    manager.Currency += 75;
                     AddNewCatQuest(manager, this);
                 }
                 else

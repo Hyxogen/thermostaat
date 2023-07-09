@@ -8,6 +8,7 @@ public class ItemData : ScriptableObject
     {
         TUNA,
         LADDER,
+        ACID,
     }
 
     public string itemName;

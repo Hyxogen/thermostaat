@@ -9,11 +9,33 @@ public class GameManager : MonoBehaviour
     public SpriteManager spriteManager;
     public List<HeroInstance> allHeroes;
     public Queue<Quest> questQueue = new();
+    public Queue<Quest> completedQuestQueue = new();
     public List<ItemInstance> shopItems;
     public TMPro.TextMeshProUGUI currencyText;
     public TMPro.TextMeshProUGUI dayText;
-    public int currency = 200;
-    public int day = 0;
+
+    private int day = 0;
+    private int currency = 200;
+
+    public int Day {
+        get {
+            return day;
+        }
+        set {
+            day = value;
+            UpdateUI();
+        }
+    }
+
+    public int Currency {
+        get {
+            return currency;
+        }
+        set {
+            currency = value;
+            UpdateUI();
+        }
+    }
 
     public GameManager()
     {
@@ -38,26 +60,15 @@ public class GameManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        currencyText.text = "" + currency;
-        dayText.text = "" + day;
-    }
-
-    public void SetCurrency(int currency)
-    {
-        this.currency = currency;
-        UpdateUI();
-    }
-
-    public void AddCurrency(int amount)
-    {
-        SetCurrency(this.currency + amount);
+        currencyText.text = "" + Currency;
+        dayText.text = "" + Day;
     }
 
     public bool Buy(int cost)
     {
-        if (currency >= cost)
+        if (Currency >= cost)
         {
-            SetCurrency(currency - cost);
+            Currency -= cost;
             return true;
         }
         else
@@ -68,8 +79,7 @@ public class GameManager : MonoBehaviour
 
     public void NextDay()
     {
-        day += 1;
-        currency -= 2;
-        UpdateUI();
+        Day += 1;
+        Currency -= 2;
     }
 }

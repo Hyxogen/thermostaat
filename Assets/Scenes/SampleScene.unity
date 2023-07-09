@@ -160,7 +160,15 @@ MonoBehaviour:
   allHeroes:
   - heroData: {fileID: 11400000, guid: c6350ada5a4655b4989e83b40e3b7f71, type: 2}
     inventory: []
-    idleTime: 0
+    idleTime: 5
+    questTime: -1
+  - heroData: {fileID: 11400000, guid: 3fceda41167021d45a773537f81ec329, type: 2}
+    inventory: []
+    idleTime: 10
+    questTime: -1
+  - heroData: {fileID: 11400000, guid: 868c10bfe847ebb87823a1099197389c, type: 2}
+    inventory: []
+    idleTime: 20
     questTime: -1
   shopItems:
   - itemData: {fileID: 11400000, guid: 2b063e5a83620aed8814facae219da66, type: 2}
@@ -197,6 +205,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ladder:
     itemData: {fileID: 11400000, guid: ee45fc98ccda474a6b4c4b9e19ee4af4, type: 2}
+  acid:
+    itemData: {fileID: 0}
 --- !u!1 &175789730
 GameObject:
   m_ObjectHideFlags: 0

@@ -43,14 +43,9 @@ public class ItemInventoryUI : MonoBehaviour
         }
     }
 
-    public bool HasItem(string name)
+    public ItemInstance GetItem(ItemData.Type itemType)
     {
-        return GetItemInstance(name) != null;
-    }
-
-    public ItemInstance GetItemInstance(string name)
-    {
-        return items.Find(item => item.itemData.itemName == name);
+        return items.Find(item => item.itemData.itemType == itemType);
     }
 
     public void AddItem(ItemInstance item)
@@ -63,16 +58,6 @@ public class ItemInventoryUI : MonoBehaviour
     {
         items.Remove(item);
         UpdateInventory();
-    }
-
-    public void RemoveItem(string name)
-    {
-        RemoveItem(GetItemInstance(name));
-    }
-    
-    public void AddItem(string name)
-    {
-        AddItem(GetItemInstance(name));
     }
 
     public List<ItemInstance> TakeItems()
