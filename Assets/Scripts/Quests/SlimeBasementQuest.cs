@@ -133,19 +133,29 @@ public class SlimeBasementQuest : Quest
 
         bool sellsAcid = false;
         int price = 20;
-        yield return new LambdaDialogueChoice("Yes (+" + price + ")", () => sellsAcid = true, "I couldn't find it", () => sellsAcid = false, SPRITE_NAME);
-
-        if (sellsAcid)
+        if (manager.itemInventory.GetItem(ItemData.Type.ACID) != null)
         {
-            yield return new DialogueText(questGiver, "You're amazing " + playerName + "!", SPRITE_NAME);
-            yield return new DialogueText(questGiver, "*rushing off* Gonna go finally clean my basement!", SPRITE_NAME);
-            manager.Currency += price;
-            yield return new DialogueText("", "You received " + price + " coins!");
+            yield return new LambdaDialogueChoice("Yes (+" + price + ")", () => sellsAcid = true, "I couldn't find it", () => sellsAcid = false, SPRITE_NAME);
+
+            if (sellsAcid)
+            {
+                yield return new DialogueText(questGiver, "You're amazing " + playerName + "!", SPRITE_NAME);
+                yield return new DialogueText(questGiver, "*rushing off* Gonna go finally clean my basement!", SPRITE_NAME);
+                manager.Currency += price;
+                yield return new DialogueText("", "You received " + price + " coins!");
+                manager.itemInventory.RemoveItem(ItemManager.Instance().acid);
+            }
+            else
+            {
+                yield return new DialogueText(questGiver, "If you can't get it, who else can?!", SPRITE_NAME);
+                yield return new DialogueText(questGiver, "*rushing off* Perhaps Peter can help me", SPRITE_NAME);
+            }
         }
         else
         {
-            yield return new DialogueText(questGiver, "If you can't get it, who else can?!", SPRITE_NAME);
-            yield return new DialogueText(questGiver, "*rushing off* Perhaps Peter can help me", SPRITE_NAME);
+            yield return new DialogueText(playerIdent, "Sorry, I give the acid to someone more usefull", SPRITE_NAME);
+            yield return new DialogueText(questGiver, "What! Why did you do that!", SPRITE_NAME);
+            yield return new DialogueText(playerIdent, "Better luck next time", SPRITE_NAME);
         }
     }
 }
