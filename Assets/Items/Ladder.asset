@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59f92ca3aca2e090b3b53c4f3641360, type: 3}
   m_Name: Ladder
   m_EditorClassIdentifier: 
-  itemName: 
-  itemType: 0
-  sprite: {fileID: 0}
-  description: 
+  itemName: Ladder
+  itemType: 1
+  sprite: {fileID: 21300000, guid: 7a3c194a4807e4dbfa9a85cf9c6c71a3, type: 3}
+  description: A sturdy looking ladder.
   minCost: 0
   maxCost: 0
