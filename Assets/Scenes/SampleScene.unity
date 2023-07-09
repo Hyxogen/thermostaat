@@ -164,7 +164,6 @@ MonoBehaviour:
     questTime: -1
   shopItems:
   - itemData: {fileID: 11400000, guid: 2b063e5a83620aed8814facae219da66, type: 2}
-  - itemData: {fileID: 11400000, guid: ee45fc98ccda474a6b4c4b9e19ee4af4, type: 2}
   currencyText: {fileID: 1501206284}
   dayText: {fileID: 1261336282}
   currency: 100
@@ -197,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ladder:
-    itemData: {fileID: 0}
+    itemData: {fileID: 11400000, guid: ee45fc98ccda474a6b4c4b9e19ee4af4, type: 2}
 --- !u!1 &175789730
 GameObject:
   m_ObjectHideFlags: 0
