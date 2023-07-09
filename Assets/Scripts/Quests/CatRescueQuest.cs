@@ -1,15 +1,24 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class CatRescueQuest : Quest
 {
+    public enum Variant
+    {
+        NORMAL,
+        LADDER,
+    }
+
     private static string QUEST_NAME = "Cat Rescue";
     private static string DESCRIPTION = "My cat ran away (again...), please bring her back!";
 
     private string questGiver;
+    private Variant variant;
 
-    public CatRescueQuest(string questGiver) : base(QUEST_NAME, DESCRIPTION)
+    public CatRescueQuest(string questGiver, Variant variant) : base(QUEST_NAME, DESCRIPTION)
     {
         this.questGiver = questGiver;
+        this.variant = variant;
     }
 
     public override IEnumerator<IDialogueBase> Next(GameManager manager)
@@ -42,38 +51,51 @@ public class CatRescueQuest : Quest
         yield return new DialogueText(hero.heroData.heroName, "Sure thing boss.");
     }
 
-    public override bool Test(HeroInstance hero)
+    public static void AddNewCatQuest(GameManager manager, CatRescueQuest oldQuest)
     {
-        ItemInstance tuna = null;
+        Variant variant = Variant.NORMAL;
 
-        foreach (ItemInstance item in hero.inventory)
+        if (manager.day >= 30 && Random.value < 0.5)
         {
-            if (item.itemData.itemType == ItemData.Type.TUNA)
-            {
-                tuna = item;
-                break;
-            }
+            variant = Variant.LADDER;
         }
 
-        if (tuna != null)
-        {
-            hero.inventory.Remove(tuna);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        manager.questQueue.Enqueue(new CatRescueQuest(oldQuest.questGiver, variant));
     }
 
     public override IEnumerable<IDialogueBase> Embark(GameManager manager, HeroInstance hero)
     {
-        if (Test(hero))
+        ItemInstance tuna = hero.inventory.Find(item => item.itemData.itemType == ItemData.Type.TUNA);
+
+        if (tuna != null)
         {
-            yield return new DialogueText(hero.heroData.heroName, "Just so you know, I found the cat.");
-            yield return new DialogueText("", "You got 50 coins!");
-            manager.SetCurrency(manager.currency + 50);
-            manager.questQueue.Enqueue(this);
+            if (variant == Variant.NORMAL)
+            {
+                hero.inventory.Remove(tuna);
+                yield return new DialogueText(hero.heroData.heroName, "Just so you know, I found the cat.");
+                yield return new DialogueText("", "You got 50 coins!");
+                manager.SetCurrency(manager.currency + 50);
+                AddNewCatQuest(manager, this);
+            }
+            else if (variant == Variant.LADDER)
+            {
+                ItemInstance ladder = hero.inventory.Find(item => item.itemData.itemType == ItemData.Type.LADDER);
+
+                if (ladder != null)
+                {
+                    hero.inventory.Remove(tuna);
+                    hero.inventory.Remove(ladder);
+                    yield return new DialogueText(hero.heroData.heroName, "I found the cat up in a tree somewhere.");
+                    yield return new DialogueText("", "You got 75 coins!");
+                    manager.SetCurrency(manager.currency + 75);
+                    AddNewCatQuest(manager, this);
+                }
+                else
+                {
+                    yield return new DialogueText(hero.heroData.heroName, "I found the cat, but it was too high up to reach.");
+                    manager.questList.AddQuest(this);
+                }
+            }
         }
         else
         {

@@ -65,6 +65,11 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
+        if (gameManager.itemInventory.items.Find(item => item.itemData.itemType == ItemData.Type.LADDER) == null && Random.value < 0.1)
+        {
+            dialogueQueue.Enqueue(new LadderDialogue());
+        }
+
         foreach (HeroInstance hero in gameManager.allHeroes)
         {
             if (hero.idleTime == 0)

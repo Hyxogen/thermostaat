@@ -11,12 +11,12 @@ public class GameManager : MonoBehaviour
     public List<ItemInstance> shopItems;
     public TMPro.TextMeshProUGUI currencyText;
     public TMPro.TextMeshProUGUI dayText;
-    public int currency = 100;
+    public int currency = 200;
     public int day = 0;
 
     public GameManager()
     {
-        questQueue.Enqueue(new CatRescueQuest("David"));
+        questQueue.Enqueue(new CatRescueQuest("David", CatRescueQuest.Variant.NORMAL));
     }
 
     private void Start()
