@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7646b872c48b6aa33b0554c7865dc015, type: 3}
-  m_Name: Chen
+  m_Name: Aimer
   m_EditorClassIdentifier: 
-  heroName: Chen
+  heroName: Aimer
   spriteName: Hero01

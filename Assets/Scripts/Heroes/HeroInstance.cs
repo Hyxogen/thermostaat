@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
 public class HeroInstance
@@ -13,5 +14,10 @@ public class HeroInstance
     {
         this.quest = quest;
         this.questTime = quest.Duration();
+    }
+
+    public void Idle()
+    {
+        idleTime = Random.Range(10, 25);
     }
 }

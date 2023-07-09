@@ -47,7 +47,7 @@ public class TakeQuestDialogue : IDialogue
         else
         {
             yield return new DialogueText(hero.heroData.heroName, "Very well.", hero.heroData.spriteName);
-            hero.idleTime = 5;
+            hero.Idle();
         }
     }
 }
