@@ -9,7 +9,7 @@ public class ItemInventoryUI : MonoBehaviour
 
     private ItemUI[] slots;
 
-    private void Awake()
+    private void Start()
     {
         slots = new ItemUI[slotsCount];
 

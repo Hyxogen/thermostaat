@@ -133,7 +133,10 @@ public class SlimeBasementQuest : Quest
 
         bool sellsAcid = false;
         int price = 20;
-        if (manager.itemInventory.GetItem(ItemData.Type.ACID) != null)
+
+        ItemInstance acid = manager.itemInventory.GetItem(ItemData.Type.ACID);
+
+        if (acid != null)
         {
             yield return new LambdaDialogueChoice("Yes (+" + price + ")", () => sellsAcid = true, "I couldn't find it", () => sellsAcid = false, SPRITE_NAME);
 
@@ -143,7 +146,7 @@ public class SlimeBasementQuest : Quest
                 yield return new DialogueText(questGiver, "*rushing off* Gonna go finally clean my basement!", SPRITE_NAME);
                 manager.Currency += price;
                 yield return new DialogueText("", "You received " + price + " coins!");
-                manager.itemInventory.RemoveItem(ItemManager.Instance().acid);
+                manager.itemInventory.RemoveItem(acid);
             }
             else
             {
