@@ -39,6 +39,12 @@ public class GameManager : MonoBehaviour
         set
         {
             currency = value;
+
+            if (currency < 0)
+            {
+                dialogueManager.dialogueQueue.Enqueue(new GameOverDialogue());
+            }
+
             UpdateUI();
         }
     }
