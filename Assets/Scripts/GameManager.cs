@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public GameManager()
     {
+        questQueue.Enqueue(new SlimeBasementQuest("Stanley"));
         questQueue.Enqueue(new CatRescueQuest("David", CatRescueQuest.Variant.NORMAL));
     }
 
@@ -45,6 +46,11 @@ public class GameManager : MonoBehaviour
     {
         this.currency = currency;
         UpdateUI();
+    }
+
+    public void AddCurrency(int amount)
+    {
+        SetCurrency(this.currency + amount);
     }
 
     public bool Buy(int cost)
