@@ -9,6 +9,7 @@ public class ItemData : ScriptableObject
         TUNA,
         LADDER,
         ACID,
+        MAGIC_ORB,
         SCROLL,
     }
 

@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public TMPro.TextMeshProUGUI currencyText;
     public TMPro.TextMeshProUGUI dayText;
 
-    private int day = 0;
+    public int day { private set; get; } = 0;
     private int currency = 200;
 
     public int Day
@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     public GameManager()
     {
         questQueue.Enqueue(new SlimeBasementQuest("Stanley"));
+        questQueue.Enqueue(new InterestingLocationQuest("Brandon"));
         questQueue.Enqueue(new CatRescueQuest("David", CatRescueQuest.Variant.NORMAL));
     }
 

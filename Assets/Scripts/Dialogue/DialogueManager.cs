@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typingCoroutine;
     private bool skipTyping = false;
     private bool isTyping = false;
+    private Dictionary<int, List<IDialogue>> scheduledDialogues = new();
 
     void Start()
     {
@@ -45,8 +46,27 @@ public class DialogueManager : MonoBehaviour
         NextDialogueAndClearChoice();
     }
 
+    public void ScheduleDialogue(int day, IDialogue dialogue)
+    {
+        if (!scheduledDialogues.ContainsKey(day))
+        {
+            scheduledDialogues.Add(day, new());
+        }
+        scheduledDialogues[day].Add(dialogue);
+    }
+
     public void StartNewDay()
     {
+        List<IDialogue> scheduled = scheduledDialogues.GetValueOrDefault(gameManager.day);
+        if (scheduled != null)
+        {
+            foreach (IDialogue dialogue in scheduled)
+            {
+                dialogueQueue.Enqueue(dialogue);
+            }
+            scheduledDialogues.Remove(gameManager.day);
+        }
+
         if (gameManager.questQueue.Count > 0 && Random.value < 0.2)
         {
             dialogueQueue.Enqueue(gameManager.questQueue.Dequeue());
