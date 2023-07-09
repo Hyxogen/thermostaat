@@ -26,7 +26,7 @@ public class SlimeBasementQuest : Quest
         yield return new DialogueText(playerIdent, "(This voice...)");
         yield return new DialogueText(questGiver, playerName + "! Do you have some acid for me?!?", SPRITE_NAME);
         yield return new DialogueText(playerIdent, "Acid? What in the lord's name do you need acid for?", SPRITE_NAME);
-        yield return new DialogueText(questGiver, "They're gettting everywhere! Please give me some acid!", SPRITE_NAME);
+        yield return new DialogueText(questGiver, "They're getting everywhere! Please give me some acid!", SPRITE_NAME);
         yield return new DialogueText(playerIdent, "Who's getting everywhere?", SPRITE_NAME);
         yield return new DialogueText(questGiver, "They're so gross (rilling), please give me some acid right now!", SPRITE_NAME);
         yield return new DialogueText(playerIdent, "What are you talking about", SPRITE_NAME);
@@ -42,7 +42,7 @@ public class SlimeBasementQuest : Quest
             yield return new DialogueText(playerIdent, "(...)", SPRITE_NAME);
 
             bool takesQuest = false;
-            yield return new LambdaDialogueChoice("I'll see what I can do ", () => takesQuest = true, "Go look someplace else for your acid", () => takesQuest = false);
+            yield return new LambdaDialogueChoice("I'll see what I can do ", () => takesQuest = true, "Go look someplace else for your acid", () => takesQuest = false, SPRITE_NAME);
 
             if (takesQuest)
             {
