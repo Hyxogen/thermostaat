@@ -46,6 +46,8 @@ public class ShopDialogue : IDialogue
                 yield return new DialogueText(merchant, "Yes you do!");
                 yield return new LambdaDialogueChoice("I do? (" + cost + ")", () => buyItem = true, "No I don't!", () => buyItem = false);
             }
+
+            attempts -= 1;
         }
 
         if (buyItem)
