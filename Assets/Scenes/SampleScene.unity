@@ -2330,6 +2330,10 @@ PrefabInstance:
       value: 168
       objectReference: {fileID: 0}
     - target: {fileID: 4309420514083109308, guid: fbfdc08c975512ea49b1af84e785752e, type: 3}
+      propertyPath: m_CellSize.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4309420514083109308, guid: fbfdc08c975512ea49b1af84e785752e, type: 3}
       propertyPath: m_Padding.m_Top
       value: 28
       objectReference: {fileID: 0}

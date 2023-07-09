@@ -25,7 +25,7 @@ public class DragonQuest : Quest
 
     public override IEnumerable<IDialogueBase> GiveDialogue(GameManager manager, HeroInstance hero)
     {
-        yield return new DialogueText(manager.PlayerIdentifier(), "Did you see that massive dragon flying over our city?", hero.heroData.spriteName);
+        yield return new DialogueText(manager.PlayerIdentifier(), "Did you see that massive dragon flying over our village?", hero.heroData.spriteName);
         yield return new DialogueText(hero.heroData.heroName, "Yeah, I remember, what about it?", hero.heroData.spriteName);
         yield return new DialogueText(manager.PlayerIdentifier(), "This village is toast if it stays here.", hero.heroData.spriteName);
         yield return new DialogueText(manager.PlayerIdentifier(), "You have to go and kill it.", hero.heroData.spriteName);
@@ -53,6 +53,7 @@ public class DragonQuest : Quest
 
         if (scroll != null)
         {
+            hero.inventory.Remove(scroll);
             yield return new DialogueText("", "You hear a loud explosion in the distance.");
             yield return new DialogueText("", "It's safe to assume the dragon won't be making a comeback.");
         }
@@ -60,8 +61,9 @@ public class DragonQuest : Quest
         {
             yield return new DialogueText(hero.heroData.heroName, "Yeah, so, I had a look at that dragon.", hero.heroData.spriteName);
             yield return new DialogueText(hero.heroData.heroName, "That thing is enormous, by the way.", hero.heroData.spriteName);
-            yield return new DialogueText(hero.heroData.heroName, "You're crazy if you think I can take it down with my old" + weaponName + ".", hero.heroData.spriteName);
+            yield return new DialogueText(hero.heroData.heroName, "You're crazy if you think I can take it down with my old " + weaponName + ".", hero.heroData.spriteName);
             yield return new DialogueText(hero.heroData.heroName, "See you around, funny man.", hero.heroData.spriteName);
+            manager.questList.AddQuest(this);
         }
 
         hero.Idle();

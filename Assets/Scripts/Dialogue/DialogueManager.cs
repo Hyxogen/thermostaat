@@ -16,10 +16,10 @@ public class DialogueManager : MonoBehaviour
     public GameManager gameManager;
     public float typeSpeed = 0.04f;
     public AudioSource audioSource;
+    public Queue<IDialogue> dialogueQueue = new();
 
     private IDialogueChoice currentChoice;
     private IEnumerator<IDialogueBase> currentDialogue;
-    private Queue<IDialogue> dialogueQueue = new();
     private Coroutine typingCoroutine;
     private bool skipTyping = false;
     private bool isTyping = false;
@@ -119,8 +119,9 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-        dialogueQueue.Enqueue(new EndOfDayDialogue(dialogueQueue.Count == 0));
         gameManager.NextDay();
+
+        dialogueQueue.Enqueue(new EndOfDayDialogue(dialogueQueue.Count == 0));
     }
 
     void NextDialogueAndClearChoice()

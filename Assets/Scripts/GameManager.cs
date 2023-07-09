@@ -17,21 +17,27 @@ public class GameManager : MonoBehaviour
     public int day { private set; get; } = 0;
     private int currency = 200;
 
-    public int Day {
-        get {
+    public int Day
+    {
+        get
+        {
             return day;
         }
-        set {
+        set
+        {
             day = value;
             UpdateUI();
         }
     }
 
-    public int Currency {
-        get {
+    public int Currency
+    {
+        get
+        {
             return currency;
         }
-        set {
+        set
+        {
             currency = value;
             UpdateUI();
         }
@@ -40,7 +46,6 @@ public class GameManager : MonoBehaviour
     public GameManager()
     {
         questQueue.Enqueue(new AnnoyingHeroQuest("Albert"));
-        questQueue.Enqueue(new DragonQuest());
         questQueue.Enqueue(new SlimeBasementQuest("Stanley"));
         questQueue.Enqueue(new InterestingLocationQuest("Brandon"));
         questQueue.Enqueue(new CatRescueQuest("David", CatRescueQuest.Variant.NORMAL));
@@ -48,8 +53,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        itemInventory.AddItem(ItemManager.Instance().scroll);
-
         UpdateUI();
     }
 
@@ -87,5 +90,16 @@ public class GameManager : MonoBehaviour
         Day += 1;
         Currency -= 2;
 
+        switch (Day)
+        {
+            case 50:
+                dialogueManager.dialogueQueue.Enqueue(new FindScrollDialogue());
+                break;
+            case 100:
+                questQueue.Enqueue(new DragonQuest());
+                break;
+            default:
+                break;
+        }
     }
 }

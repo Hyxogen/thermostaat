@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Scroll
   m_EditorClassIdentifier: 
   itemName: Boom Scroll
-  itemType: 3
+  itemType: 4
   sprite: {fileID: 21300000, guid: a8f04b36c545abc46a09c34c8575fdf5, type: 3}
   description: A long scroll with many words that you don't understand. At the bottom
     is a warning written in large red letters that just says "BOOM".
