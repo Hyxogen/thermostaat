@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Acid
   itemType: 2
-  sprite: {fileID: 176366260, guid: 0ab5b7054b1754ebcbb8820c13d085dd, type: 3}
+  sprite: {fileID: 21300000, guid: 078e4fab6af1418bc8cbe934aa6fb36d, type: 3}
   description: This acid is too strong for you, traveller.
   minCost: 0
   maxCost: 0
