@@ -26,30 +26,30 @@ public class CatRescueQuest : Quest
     {
         bool savesCat = false;
 
-        yield return new DialogueText(questGiver, "Hey there " + manager.PlayerName() + ".");
-        yield return new DialogueText(questGiver, "Have you seen my cat Whiskers?");
-        yield return new DialogueText(manager.PlayerIdentifier(), "Nope");
-        yield return new DialogueText(questGiver, "Darn, was hoping you saw him.");
-        yield return new DialogueText(questGiver, "Could you catch him again if he's around?");
+        yield return new DialogueText(questGiver, "Hey there " + manager.PlayerName() + ".", SPRITE_NAME);
+        yield return new DialogueText(questGiver, "Have you seen my cat Whiskers?", SPRITE_NAME);
+        yield return new DialogueText(manager.PlayerIdentifier(), "Nope", SPRITE_NAME);
+        yield return new DialogueText(questGiver, "Darn, was hoping you saw him.", SPRITE_NAME);
+        yield return new DialogueText(questGiver, "Could you catch him again if he's around?", SPRITE_NAME);
 
-        yield return new LambdaDialogueChoice("Of course!", () => savesCat = true, "No!", () => savesCat = false);
+        yield return new LambdaDialogueChoice("Of course!", () => savesCat = true, "No!", () => savesCat = false, SPRITE_NAME);
 
         if (savesCat)
         {
             manager.questList.AddQuest(this);
-            yield return new DialogueText(questGiver, "Thanks man.");
+            yield return new DialogueText(questGiver, "Thanks man.", SPRITE_NAME);
         }
         else
         {
             manager.questQueue.Enqueue(this);
-            yield return new DialogueText(questGiver, "Understandable, have a great day.");
+            yield return new DialogueText(questGiver, "Understandable, have a great day.", SPRITE_NAME);
         }
     }
 
     public override IEnumerable<IDialogueBase> GiveDialogue(GameManager manager, HeroInstance hero)
     {
-        yield return new DialogueText(manager.PlayerIdentifier(), questGiver + " lost their cat, please find it for them.");
-        yield return new DialogueText(hero.heroData.heroName, "Sure thing boss.");
+        yield return new DialogueText(manager.PlayerIdentifier(), questGiver + " lost their cat, please find it for them.", hero.heroData.spriteName);
+        yield return new DialogueText(hero.heroData.heroName, "Sure thing boss.", hero.heroData.spriteName);
     }
 
     public static void AddNewCatQuest(GameManager manager, CatRescueQuest oldQuest)
@@ -73,7 +73,7 @@ public class CatRescueQuest : Quest
             if (variant == Variant.NORMAL)
             {
                 hero.inventory.Remove(tuna);
-                yield return new DialogueText(hero.heroData.heroName, "Just so you know, I found the cat.");
+                yield return new DialogueText(hero.heroData.heroName, "Just so you know, I found the cat.", hero.heroData.spriteName);
                 yield return new DialogueText("", "You got 50 coins!");
                 manager.SetCurrency(manager.currency + 50);
                 AddNewCatQuest(manager, this);
@@ -86,22 +86,22 @@ public class CatRescueQuest : Quest
                 {
                     hero.inventory.Remove(tuna);
                     hero.inventory.Remove(ladder);
-                    yield return new DialogueText(hero.heroData.heroName, "I found the cat up in a tree somewhere.");
+                    yield return new DialogueText(hero.heroData.heroName, "I found the cat up in a tree somewhere.", hero.heroData.spriteName);
                     yield return new DialogueText("", "You got 75 coins!");
                     manager.SetCurrency(manager.currency + 75);
                     AddNewCatQuest(manager, this);
                 }
                 else
                 {
-                    yield return new DialogueText(hero.heroData.heroName, "I found the cat, but it was too high up to reach.");
+                    yield return new DialogueText(hero.heroData.heroName, "I found the cat, but it was too high up to reach.", hero.heroData.spriteName);
                     manager.questList.AddQuest(this);
                 }
             }
         }
         else
         {
-            yield return new DialogueText(hero.heroData.heroName, "I was not able to find that cat you told me about.");
-            yield return new DialogueText(hero.heroData.heroName, "You might have better luck if you had something to lure it with.");
+            yield return new DialogueText(hero.heroData.heroName, "I was not able to find that cat you told me about.", hero.heroData.spriteName);
+            yield return new DialogueText(hero.heroData.heroName, "You might have better luck if you had something to lure it with.", hero.heroData.spriteName);
             manager.questList.AddQuest(this);
         }
 
