@@ -24,9 +24,14 @@ public class GameManager : MonoBehaviour
         UpdateUI();
     }
 
+    public string PlayerIdentifier()
+    {
+        return "John (You)";
+    }
+
     public string PlayerName()
     {
-        return "You";
+        return "John";
     }
 
     public void UpdateUI()

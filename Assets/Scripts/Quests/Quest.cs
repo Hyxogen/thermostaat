@@ -14,7 +14,7 @@ public abstract class Quest : IDialogue
     public abstract IEnumerator<IDialogueBase> Next(GameManager manager);
     public abstract IEnumerable<IDialogueBase> GiveDialogue(GameManager manager, HeroInstance hero);
     public abstract bool Test(HeroInstance hero);
-    public abstract IEnumerator<IDialogueBase> Embark(GameManager manager, HeroInstance hero);
+    public abstract IEnumerable<IDialogueBase> Embark(GameManager manager, HeroInstance hero);
 
     public int Duration()
     {

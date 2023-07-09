@@ -6,12 +6,14 @@ public class ShopDialogue : IDialogue
     private ItemInstance item;
     private int cost;
     private string merchant;
+    private int attempts;
 
-    public ShopDialogue(ItemInstance item, string merchant)
+    public ShopDialogue(ItemInstance item, string merchant, int attempts)
     {
         this.item = item;
         this.cost = Random.Range(item.itemData.minCost, item.itemData.maxCost + 1);
         this.merchant = merchant;
+        this.attempts = attempts;
     }
 
     public IEnumerator<IDialogueBase> Next(GameManager manager)
@@ -22,25 +24,28 @@ public class ShopDialogue : IDialogue
 
         yield return new LambdaDialogueChoice("Yes (" + cost + ")", () => buyItem = true, "No", () => buyItem = false);
 
-        if (buyItem)
+        while (attempts > 1)
         {
-            if (manager.Buy(cost))
+            if (buyItem)
             {
-                manager.itemInventory.AddItem(new ItemInstance(item));
-                yield return new DialogueText(merchant, "Buy some more!");
-                yield return new LambdaDialogueChoice("Yes (" + cost + ")", () => buyItem = true, "No", () => buyItem = false);
+                if (manager.Buy(cost))
+                {
+                    manager.itemInventory.AddItem(new ItemInstance(item));
+                    yield return new DialogueText(merchant, "Buy some more!");
+                    yield return new LambdaDialogueChoice("Yes (" + cost + ")", () => buyItem = true, "No", () => buyItem = false);
+                }
+                else
+                {
+                    yield return new DialogueText(merchant, "Another broke NPC... I'll be back.");
+                    yield break;
+                }
             }
             else
             {
-                yield return new DialogueText(merchant, "Another broke NPC... I'll be back.");
-                yield break;
+                yield return new DialogueText(manager.PlayerIdentifier(), "I don't want your " + item.itemData.itemName + ".");
+                yield return new DialogueText(merchant, "Yes you do!");
+                yield return new LambdaDialogueChoice("I do? (" + cost + ")", () => buyItem = true, "No I don't!", () => buyItem = false);
             }
-        }
-        else
-        {
-            yield return new DialogueText(manager.PlayerName(), "I don't want your " + item.itemData.itemName + ".");
-            yield return new DialogueText(merchant, "Yes you do!");
-            yield return new LambdaDialogueChoice("I do? (" + cost + ")", () => buyItem = true, "No I don't!", () => buyItem = false);
         }
 
         if (buyItem)
@@ -48,7 +53,7 @@ public class ShopDialogue : IDialogue
             if (manager.Buy(cost))
             {
                 manager.itemInventory.AddItem(new ItemInstance(item));
-                yield return new DialogueText(manager.PlayerName(), "Thanks.");
+                yield return new DialogueText(manager.PlayerIdentifier(), "Thanks.");
             }
             else
             {
