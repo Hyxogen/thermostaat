@@ -28,8 +28,6 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         Reset();
-        StartNewDay();
-        NextDialogue();
     }
 
     public void NextDialogue()
