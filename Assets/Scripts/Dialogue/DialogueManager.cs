@@ -132,7 +132,7 @@ public class DialogueManager : MonoBehaviour
                 break;
             }
             dialogueField.text += ch;
-            if (audioSource != null) {
+            if (audioSource != null && !audioSource.isPlaying) {
                 audioSource.Play();
             }
             yield return new WaitForSeconds(speed);
