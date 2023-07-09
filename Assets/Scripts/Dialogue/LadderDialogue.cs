@@ -8,6 +8,6 @@ public class LadderDialogue : IDialogue
         yield return new DialogueText("", "I wonder what they're doing up there...");
         yield return new DialogueText("", "You received 1 ladder!");
 
-        manager.itemInventory.AddItem(ItemManager.Instance().ladder);
+        manager.itemInventory.AddItem(new ItemInstance(ItemManager.Instance().ladder));
     }
 }

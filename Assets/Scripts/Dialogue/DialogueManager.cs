@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-
     public TMPro.TextMeshProUGUI nameField;
     public TMPro.TextMeshProUGUI dialogueField;
     public Image npcImage;
@@ -51,6 +50,11 @@ public class DialogueManager : MonoBehaviour
         if (gameManager.questQueue.Count > 0 && Random.value < 0.2)
         {
             dialogueQueue.Enqueue(gameManager.questQueue.Dequeue());
+        }
+
+        if (gameManager.completedQuestQueue.Count > 0 && Random.value < 0.2)
+        {
+            dialogueQueue.Enqueue(new CompletedQuestDialogue(gameManager.completedQuestQueue.Dequeue()));
         }
 
         if (gameManager.shopItems.Count > 0 && Random.value < 0.1)

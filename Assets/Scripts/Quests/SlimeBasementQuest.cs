@@ -35,7 +35,9 @@ public class SlimeBasementQuest : Quest
         yield return new DialogueText(questGiver, "Slimes ofcourse! Now give me that acid! *attempting to reach futher*", SPRITE_NAME);
         yield return new DialogueText(playerIdent, "Could you not go through my stuff thank you very much?!", SPRITE_NAME);
 
-        if (!manager.itemInventory.HasItem("Acid"))
+        ItemInstance acid = manager.itemInventory.GetItem(ItemData.Type.ACID);
+
+        if (acid == null)
         {
             yield return new DialogueText(playerIdent, "I don't have acid at the moment anyway", SPRITE_NAME);
             yield return new DialogueText(questGiver, "What?! And you call yourself a merchant?!", SPRITE_NAME);
@@ -84,8 +86,8 @@ public class SlimeBasementQuest : Quest
                     }
                 }
                 yield return new DialogueText(questGiver, "It's a deal!", SPRITE_NAME);
-                manager.AddCurrency(price);
-                manager.itemInventory.RemoveItem("Acid");
+                manager.Currency += price;
+                manager.itemInventory.RemoveItem(acid);
             }
             else
             {
@@ -113,10 +115,10 @@ public class SlimeBasementQuest : Quest
         yield return new DialogueText(hero.heroData.heroName, "You arent like using this personally, right?", hero.heroData.spriteName);
 
         yield return new DialogueText("", "You received 1 bottle of acid!", hero.heroData.spriteName);
-        manager.itemInventory.AddItem("Acid");
+        manager.itemInventory.AddItem(new ItemInstance(ItemManager.Instance().acid));
 
         yield return new DialogueText(hero.heroData.heroName, "Anyway, I'm out of here. Holler me when you need me again", hero.heroData.spriteName);
 
-        hero.idleTime = 5;
+        hero.Idle();
     }
 }
