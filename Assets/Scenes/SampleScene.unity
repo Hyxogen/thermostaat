@@ -1325,6 +1325,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1015699618}
     - target: {fileID: 6806444929641942569, guid: 33abdf4452736465289ccc4301e2c946, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1408229894}
+    - target: {fileID: 6806444929641942569, guid: 33abdf4452736465289ccc4301e2c946, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 26707509}
@@ -1378,10 +1382,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9b6488f6c4e33af688020827920ccd0e, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
