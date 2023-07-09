@@ -37,8 +37,13 @@ public class InterestingLocationQuest : Quest
         yield return new LambdaDialogueChoice("*point in right direction*", () => takeQuest = false, "*point in wrong direction*", () => takeQuest = true, SPRITE_NAME);
 
         yield return new DialogueText(questGiver, "Cheers! See you around", SPRITE_NAME);
-        if (takeQuest){
+        if (takeQuest)
+        {
             manager.questList.AddQuest(this);
+        }
+        else
+        {
+            manager.questQueue.Enqueue(this);
         }
         //yield return new DialogueText(questGiver, "Anyway, thanks for the help! I'll ")
         //yield return new DialogueText(playerIdent, "", SPRITE_NAME);
@@ -58,13 +63,14 @@ public class InterestingLocationQuest : Quest
         yield return new DialogueText(heroName, "Hhmmm...", heroSprite);
         yield return new DialogueText(heroName, "Sounds like a good idea", heroSprite);
     }
-    
+
     public override IEnumerable<IDialogueBase> Embark(GameManager manager, HeroInstance hero)
     {
         string playerIdent = manager.PlayerIdentifier();
         string playerName = manager.PlayerName();
         string heroName = hero.heroData.heroName;
         string heroSprite = hero.heroData.spriteName;
+        bool tookOrb = false;
 
         //TODO only succeed if hero is ranger
         if (heroName == "Aimer")
@@ -85,6 +91,7 @@ public class InterestingLocationQuest : Quest
                 yield return new DialogueText(heroName, "Be carefull with that thing", heroSprite);
                 manager.itemInventory.AddItem(ItemManager.Instance().orb);
                 yield return new DialogueText("", "You received a magic orb");
+                tookOrb = true;
             }
             else
             {
@@ -122,6 +129,11 @@ public class InterestingLocationQuest : Quest
                 hero.idleTime = 20;
             }
             //yield return new DialogueText(heroName, "Which you will ofcourse pay the half of", heroSprite);
+        }
+
+        if (!tookOrb)
+        {
+            manager.questQueue.Enqueue(this);
         }
     }
 }

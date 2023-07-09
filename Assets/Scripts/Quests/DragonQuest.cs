@@ -34,6 +34,7 @@ public class DragonQuest : Quest
         yield return new DialogueText(hero.heroData.heroName, "Uhm, ok, sure.", hero.heroData.spriteName);
 
         ItemInstance scroll = hero.inventory.Find(item => item.itemData.itemType == ItemData.Type.SCROLL);
+        ItemInstance orb = hero.inventory.Find(item => item.itemData.itemType == ItemData.Type.MAGIC_ORB);
 
         if (scroll != null)
         {
@@ -42,6 +43,12 @@ public class DragonQuest : Quest
             yield return new DialogueText(hero.heroData.heroName, "?");
             yield return new DialogueText(hero.heroData.heroName, "?", hero.heroData.spriteName);
             yield return new DialogueText(manager.PlayerIdentifier(), "You'll probably want to take this scroll.", hero.heroData.spriteName);
+
+            if (orb != null)
+            {
+                yield return new DialogueText(manager.PlayerIdentifier(), "And this magical orb.", hero.heroData.spriteName);
+            }
+
             yield return new DialogueText(hero.heroData.heroName, "Sure.", hero.heroData.spriteName);
         }
     }
@@ -53,9 +60,23 @@ public class DragonQuest : Quest
 
         if (scroll != null)
         {
-            hero.inventory.Remove(scroll);
-            yield return new DialogueText("", "You hear a loud explosion in the distance.");
-            yield return new DialogueText("", "It's safe to assume the dragon won't be making a comeback.");
+            ItemInstance orb = hero.inventory.Find(item => item.itemData.itemType == ItemData.Type.MAGIC_ORB);
+
+            if (orb != null)
+            {
+                hero.inventory.Remove(scroll);
+                hero.inventory.Remove(orb);
+                yield return new DialogueText("", "You hear a loud explosion in the distance.");
+                yield return new DialogueText("", "It's safe to assume the dragon won't be making a comeback.");
+                yield return new DialogueText("", "Thanks for playing.");
+            }
+            else
+            {
+                yield return new DialogueText(hero.heroData.heroName, "I tried that scroll of yours.", hero.heroData.spriteName);
+                yield return new DialogueText(hero.heroData.heroName, "It did basically nothing at all.", hero.heroData.spriteName);
+                yield return new DialogueText(hero.heroData.heroName, "We need something with strong magical energy to amplify its effect.", hero.heroData.spriteName);
+                manager.questList.AddQuest(this);
+            }
         }
         else
         {

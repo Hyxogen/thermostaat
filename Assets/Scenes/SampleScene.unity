@@ -478,6 +478,8 @@ MonoBehaviour:
   sprites:
   - name: Peasant01
     sprite: {fileID: 21300000, guid: c0d8b3dcb0951f792b449ba3350528b0, type: 3}
+  - name: Peasant02
+    sprite: {fileID: 21300000, guid: 4358220239e881195a519bd6845576c1, type: 3}
   - name: Peasant03
     sprite: {fileID: 21300000, guid: 5d878582b57016d7fa524d8d8a6ef3ef, type: 3}
   - name: Hero01

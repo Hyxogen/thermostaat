@@ -45,10 +45,10 @@ public class GameManager : MonoBehaviour
 
     public GameManager()
     {
+        questQueue.Enqueue(new CatRescueQuest("David", CatRescueQuest.Variant.NORMAL));
         questQueue.Enqueue(new AnnoyingHeroQuest("Albert"));
         questQueue.Enqueue(new SlimeBasementQuest("Stanley"));
         questQueue.Enqueue(new InterestingLocationQuest("Brandon"));
-        questQueue.Enqueue(new CatRescueQuest("David", CatRescueQuest.Variant.NORMAL));
     }
 
     private void Start()

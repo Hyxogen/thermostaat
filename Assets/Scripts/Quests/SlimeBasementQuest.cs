@@ -120,6 +120,7 @@ public class SlimeBasementQuest : Quest
         yield return new DialogueText(hero.heroData.heroName, "Anyway, I'm out of here. Holler me when you need me again", hero.heroData.spriteName);
 
         hero.Idle();
+        manager.completedQuestQueue.Enqueue(this);
     }
     
     public override IEnumerable<IDialogueBase> QuestCompleted(GameManager manager)
